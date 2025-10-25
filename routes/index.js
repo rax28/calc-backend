@@ -7,7 +7,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/calculate", (req, res) => {
-  =
+  
   const a = req.body.num1;
 
   const b = req.body.num2;
