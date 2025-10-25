@@ -7,11 +7,11 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/calculate", (req, res) => {
-  console.log(req);
+  =
   const a = req.body.num1;
 
   const b = req.body.num2;
-  console.log(a, b);
+ 
   res.send({ result: a + b });
 });
 
