@@ -10,13 +10,22 @@ var usersRouter = require("./routes/users");
 
 var app = express();
 
-//cors
-app.use(
-  cors({
-    origin: "https://calc-frontend-n9z6.onrender.com/", // your frontend URL
-    methods: ["GET", "POST"], // allowed HTTP methods
-  })
-);
+const allowedOrigins = [
+  "http://localhost:5173", // dev
+  "https://calc-frontend-n9z6.onrender.com" // deployed frontend
+];
+
+app.use(cors({
+  origin: function(origin, callback){
+    // allow requests with no origin (like Postman)
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      const msg = "The CORS policy for this site does not allow access from the specified Origin.";
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
