@@ -13,7 +13,7 @@ var app = express();
 //cors
 app.use(
   cors({
-    origin: "http://localhost:5173", // your frontend URL
+    origin: "https://calc-frontend-n9z6.onrender.com/", // your frontend URL
     methods: ["GET", "POST"], // allowed HTTP methods
   })
 );
